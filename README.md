@@ -4,7 +4,6 @@ Android , Add shadow for View or ViewGroup
 
 # Sample
 
-        View bg = findViewById(R.id.rl_bg);
         ShadowDrawable shadowDrawable = new ShadowDrawable();
         shadowDrawable.setColor(ContextCompat.getColor(this, R.color.my_blur))    //shadowcolor
                 .setOffsetY(DensityUtil.dip2px(this, 5))    //阴影下偏移--offset of the shadow
