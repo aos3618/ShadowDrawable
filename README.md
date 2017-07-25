@@ -14,6 +14,34 @@ Android , Add shadow for View or ViewGroup
                 .setParentHeight(DensityUtil.dip2px(this, 200))  //设置要依附的View的高度 -- the height of parent view
                 .attach(bg)                                 //要在哪个View上面加阴影-- the shadow parent.MUST
                 .build()                                   //显示，必调-- to show the shadow.MUST
+# Getting start
+## Gradle
+###   1. Add it in your root build.gradle at the end of repositories:
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+###   2. Add the dependency
+	dependencies {
+	        compile 'com.github.aos3618:ShadowDrawable:1.0'
+	}
+        
+## Maven
+###   1.
+	<repositories>
+		<repository>
+		    <id>jitpack.io</id>
+		    <url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+###   2. Add the dependency
+     	<dependency>
+	    <groupId>com.github.aos3618</groupId>
+	    <artifactId>ShadowDrawable</artifactId>
+	    <version>1.0</version>
+	</dependency>   
 
 # Result
   ![image](https://github.com/aos3618/ShadowDrawable/blob/master/Shadow/shadow.jpg)
