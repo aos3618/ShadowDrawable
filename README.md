@@ -15,6 +15,6 @@ Android , Add shadow for View or ViewGroup
                 .setParentHeight(DensityUtil.dip2px(this, 200))  //设置要依附的View的高度 -- the height of parent view
                 .attach(bg)                                 //要在哪个View上面加阴影-- the shadow parent.MUST
                 .build();                                   //显示，必调-- to show the shadow.MUST
-                
+
 # Result
   ![image](https://github.com/aos3618/ShadowDrawable/blob/master/Shadow/shadow.jpg)
