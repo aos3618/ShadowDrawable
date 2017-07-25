@@ -2,7 +2,7 @@
 为View 和 ViewGroup 添加阴影效果
 Android , Add shadow for View or ViewGroup
 
-#Sample
+# Sample
 
         View bg = findViewById(R.id.rl_bg);
         ShadowDrawable shadowDrawable = new ShadowDrawable();
@@ -16,5 +16,5 @@ Android , Add shadow for View or ViewGroup
                 .attach(bg)                                 //要在哪个View上面加阴影-- the shadow parent.MUST
                 .build();                                   //显示，必调-- to show the shadow.MUST
                 
-#Result
+# Result
   ![image](https://github.com/aos3618/ShadowDrawable/blob/master/Shadow/shadow.jpg)
