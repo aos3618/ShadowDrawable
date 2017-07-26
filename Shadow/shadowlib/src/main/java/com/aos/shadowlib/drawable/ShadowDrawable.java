@@ -11,20 +11,22 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.IntRange;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 
 /**
+ * View bg = findViewById(R.id.rl_bg);
  * ShadowDrawable shadowDrawable = new ShadowDrawable();
- * shadowDrawable.setColor(ContextCompat.getColor(this, R.color.my_blur))
- * .setOffsetY(DensityUtil.dip2px(this, 5))
- * .setRadius(DensityUtil.dip2px(this, 8))
- * .setSoftline(DensityUtil.dip2px(this, 8))
- * .setFilterColor(0x56ffffff)
- * .setTopMargin(DensityUtil.dip2px(this, 3))
- * .attach(mCenterContainer)
- * .build();
- * <p>
+ * shadowDrawable.setColor(ContextCompat.getColor(this, R.color.my_blur))    //shadowcolor
+ * .setOffsetY(DensityUtil.dip2px(this, 5))    //阴影下偏移--offset of the shadow
+ * .setRadius(DensityUtil.dip2px(this, 8))     //四角半径--concern of the rectangle
+ * .setEdgeShadowWidth(DensityUtil.dip2px(this, 8))   //四周阴影半径-- the shadow of each edge of the rectangle
+ * .setFilterColor(0x56ffffff)                 //中间值，越大阴影越接近设置的值-- the slot to said how close to the shadowcolor
+ * .setTopMargin(DensityUtil.dip2px(this, 3))  //上间距--top margin
+ * .setParentHeight(DensityUtil.dip2px(this, 200))  //设置要依附的View的高度 -- the height of parent view
+ * .attach(bg)                                 //要在哪个View上面加阴影-- the shadow parent.※
+ * .build();                                   //显示，必调-- to show the shadow.※
  * Created by AoS on 2017/7/14.
  */
 
@@ -39,7 +41,7 @@ public class ShadowDrawable extends Drawable {
     private int radius = 10;
     private int offsetX = 0;
     private int offsetY = 10;
-    private int softline = 20;
+    private int edgeShadowWidth = 20;
     private int colorFilter = 0x16ffffff;
     private int parentHeight = 0;
     private int topMargin = 0;
@@ -63,7 +65,7 @@ public class ShadowDrawable extends Drawable {
      */
     public ShadowDrawable setDefault(int c) {
         this.color = c;
-        paintShadow.setShadowLayer(softline, offsetX, offsetY, color & colorFilter);
+        paintShadow.setShadowLayer(edgeShadowWidth, offsetX, offsetY, color & colorFilter);
         return this;
     }
 
@@ -75,19 +77,19 @@ public class ShadowDrawable extends Drawable {
      */
     public ShadowDrawable setRadius(int r) {
         this.radius = r;
-        paintShadow.setShadowLayer(softline, offsetX, offsetY, color & colorFilter);
+        paintShadow.setShadowLayer(edgeShadowWidth, offsetX, offsetY, color & colorFilter);
         return this;
     }
 
     /**
-     * 柔边
+     * 四周阴影宽度
      *
      * @param s
      * @return
      */
-    public ShadowDrawable setSoftline(int s) {
-        this.softline = s;
-        paintShadow.setShadowLayer(softline, offsetX, offsetY, color & colorFilter);
+    public ShadowDrawable setEdgeShadowWidth(int s) {
+        this.edgeShadowWidth = s;
+        paintShadow.setShadowLayer(edgeShadowWidth, offsetX, offsetY, color & colorFilter);
         return this;
     }
 
@@ -99,7 +101,7 @@ public class ShadowDrawable extends Drawable {
      */
     public ShadowDrawable setColor(int c) {
         this.color = c;
-        paintShadow.setShadowLayer(softline, offsetX, offsetY, color & colorFilter);
+        paintShadow.setShadowLayer(edgeShadowWidth, offsetX, offsetY, color & colorFilter);
         return this;
     }
 
@@ -111,13 +113,13 @@ public class ShadowDrawable extends Drawable {
      */
     public ShadowDrawable setFilterColor(int c) {
         this.colorFilter = c;
-        paintShadow.setShadowLayer(softline, offsetX, offsetY, color & colorFilter);
+        paintShadow.setShadowLayer(edgeShadowWidth, offsetX, offsetY, color & colorFilter);
         return this;
     }
 
     public ShadowDrawable setOffsetX(int x) {
         this.offsetX = x;
-        paintShadow.setShadowLayer(softline, offsetX, offsetY, color & colorFilter);
+        paintShadow.setShadowLayer(edgeShadowWidth, offsetX, offsetY, color & colorFilter);
         return this;
     }
 
@@ -129,7 +131,7 @@ public class ShadowDrawable extends Drawable {
      */
     public ShadowDrawable setOffsetY(int y) {
         this.offsetY = y;
-        paintShadow.setShadowLayer(softline, offsetX, offsetY, color & colorFilter);
+        paintShadow.setShadowLayer(edgeShadowWidth, offsetX, offsetY, color & colorFilter);
         return this;
     }
 
@@ -199,12 +201,16 @@ public class ShadowDrawable extends Drawable {
     }
 
     @Override
+    public void setColorFilter(@Nullable ColorFilter colorFilter) {
+
+    }
+
+    @Override
     protected void onBoundsChange(Rect bounds) {
-//        Rect rect = new Rect(bounds.left, bounds.top, bounds.right + offsetX, bounds.bottom + offsetY);
         super.onBoundsChange(bounds);
 
         path.reset();
-        rectF = new RectF(softline, topMargin, bounds.width() - softline, bounds.height() - offsetY - softline);
+        rectF = new RectF(edgeShadowWidth, topMargin, bounds.width() - edgeShadowWidth, bounds.height() - offsetY - edgeShadowWidth);
         path.addRoundRect(rectF, new float[]{radius, radius, radius, radius, radius, radius, radius, radius}, Path.Direction.CW);
 
     }
@@ -212,10 +218,6 @@ public class ShadowDrawable extends Drawable {
     public ShadowDrawable setShadowAlpha(int i) {
         setAlpha(i);
         return this;
-    }
-
-    @Override
-    public void setColorFilter(ColorFilter colorFilter) {
     }
 
     @Override
