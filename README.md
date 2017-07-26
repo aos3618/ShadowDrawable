@@ -29,7 +29,7 @@ Android , Add shadow for View or ViewGroup
 	}
 ###   2. Add the dependency
 	dependencies {
-	        compile 'com.github.aos3618:ShadowDrawable:1.2'
+	        compile 'com.github.aos3618:ShadowDrawable:1.2.1'
 	}
         
 ## Maven
@@ -44,6 +44,6 @@ Android , Add shadow for View or ViewGroup
      	<dependency>
 	    <groupId>com.github.aos3618</groupId>
 	    <artifactId>ShadowDrawable</artifactId>
-	    <version>1.2</version>
+	    <version>1.2.1</version>
 	</dependency>   
 
