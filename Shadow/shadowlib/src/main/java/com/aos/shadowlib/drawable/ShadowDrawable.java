@@ -61,10 +61,10 @@ public class ShadowDrawable extends Drawable {
      *
      * @param c
      */
-    public void setDefault(int c) {
+    public ShadowDrawable setDefault(int c) {
         this.color = c;
         paintShadow.setShadowLayer(softline, offsetX, offsetY, color & colorFilter);
-        invalidateSelf();
+        return this;
     }
 
     /**
