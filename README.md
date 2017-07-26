@@ -1,6 +1,7 @@
 # ShadowDrawable
 为View 和 ViewGroup 添加阴影效果
 Android , Add shadow for View or ViewGroup
+![image](https://github.com/aos3618/ShadowDrawable/blob/master/shadow.jpg)
 
 # Check for new version
 ## [LastestVersion](https://jitpack.io/#aos3618/ShadowDrawable/)  
@@ -46,5 +47,3 @@ Android , Add shadow for View or ViewGroup
 	    <version>1.2</version>
 	</dependency>   
 
-# Result
-  ![image](https://github.com/aos3618/ShadowDrawable/blob/master/Shadow/shadow.jpg)
