@@ -2,6 +2,9 @@
 为View 和 ViewGroup 添加阴影效果
 Android , Add shadow for View or ViewGroup
 
+# Check for new version
+[LastestVersion](https://jitpack.io/#aos3618/ShadowDrawable/)  
+
 # Sample
 
         ShadowDrawable shadowDrawable = new ShadowDrawable();
