@@ -3,8 +3,10 @@
 Android , Add shadow for View or ViewGroup
 ![image](https://github.com/aos3618/ShadowDrawable/blob/master/shadow.jpg)
 
+
 # Check for new version
 ## [LastestVersion](https://jitpack.io/#aos3618/ShadowDrawable/)  
+
 
 # Sample
 
